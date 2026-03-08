@@ -40,7 +40,6 @@ class LinkedList{
                 currentNode = currentNode.nextNode;
             };
             count += 1;
-            
             return count;
         }
     }
@@ -53,7 +52,15 @@ class LinkedList{
     }
 
     tail() {
-
+        if (this.headNode === null)
+            return undefined;
+        else {
+            let currentNode = this.headNode;
+            while (currentNode.nextNode !== null) {
+                currentNode = currentNode.nextNode;
+            }; 
+            return currentNode.value;
+        }
     }
 
     at(index) {
