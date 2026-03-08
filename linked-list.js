@@ -78,7 +78,16 @@ class LinkedList{
     }
     
     pop() {
+        if (this.headNode === null)
+            return undefined;
+        else {
+            const oldHeadNode = this.headNode;
 
+            this.headNode = this.headNode.nextNode;
+            oldHeadNode.nextNode = null;
+
+            return oldHeadNode.value;
+        }
     }
 
     contains(value) {
