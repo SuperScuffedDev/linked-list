@@ -144,9 +144,9 @@ class LinkedList{
     }
 
     insertAt(index, ...values) {
-        const listSize = this.size()
+        const listSize = this.size();
         if (index < 0 || index > listSize)
-            throw RangeError(`requested index: ${index} | indexed: 0 - ${listSize}`)
+            throw RangeError(`requested index: ${index} | placeable index: 0 - ${listSize}`);
 
         function insertValues(i, currentNode) {
             for (i; i < values.length; i++) {
@@ -168,7 +168,24 @@ class LinkedList{
     }
 
     RemoveAt(index) {
+        const listSize = this.size();
+        if (index < 0 || index > listSize)
+            throw RangeError(`requested index: ${index} | indexed: 0 - ${listSize - 1}`);
 
+        if (index === 0)
+            this.pop();
+        else {
+            let currentNode = this.headNode;
+            for (let i = 1; i < index; i++) {
+                currentNode = currentNode.nextNode;
+            };
+            const nodeToRemove = currentNode.nextNode;
+
+            currentNode.nextNode = nodeToRemove.nextNode;
+            nodeToRemove.nextNode = null;
+            
+            return nodeToRemove.value;
+        }
     }
 }
 
