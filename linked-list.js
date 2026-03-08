@@ -173,7 +173,7 @@ class LinkedList{
             throw RangeError(`requested index: ${index} | indexed: 0 - ${listSize - 1}`);
 
         if (index === 0)
-            this.pop();
+            return this.pop();
         else {
             let currentNode = this.headNode;
             for (let i = 1; i < index; i++) {
@@ -183,7 +183,7 @@ class LinkedList{
 
             currentNode.nextNode = nodeToRemove.nextNode;
             nodeToRemove.nextNode = null;
-            
+
             return nodeToRemove.value;
         }
     }
