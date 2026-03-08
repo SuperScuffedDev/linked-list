@@ -144,7 +144,27 @@ class LinkedList{
     }
 
     insertAt(index, ...values) {
+        const listSize = this.size()
+        if (index < 0 || index > listSize)
+            throw RangeError(`requested index: ${index} | indexed: 0 - ${listSize}`)
 
+        function insertValues(i, currentNode) {
+            for (i; i < values.length; i++) {
+                currentNode.nextNode = new Node(values[i], currentNode.nextNode);
+                currentNode = currentNode.nextNode;
+            }
+        }
+
+        if (this.headNode === null || index === 0) {
+            this.prepend(values[0]);
+            insertValues(1, this.headNode);
+        } else {
+            let currentNode = this.headNode;
+            for (let i = 1; i < index; i++) {
+                currentNode = currentNode.nextNode;
+            };
+            insertValues(0, currentNode);
+        }
     }
 
     RemoveAt(index) {
