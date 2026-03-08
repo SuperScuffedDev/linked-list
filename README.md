@@ -1,7 +1,7 @@
-# Singley Linked List
-Module for linked list integrated with js.
+## Singley Linked List
+Module for linked list integrated with javascript.
 
-## methods
+### methods
 
 ```js
 append(value)
