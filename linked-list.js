@@ -29,12 +29,19 @@ class LinkedList{
     }
 
     size() {
+        let count = 0
+
         if (this.headNode === null)
-            return 0;
+            return count;
         else {
             let currentNode = this.headNode;
-
+            while (currentNode.nextNode !== null) {
+                count += 1;
+                currentNode = currentNode.nextNode;
+            };
+            count += 1;
             
+            return count;
         }
     }
 
